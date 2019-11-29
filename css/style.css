@@ -1,0 +1,86 @@
+/*  PALETTE
+    
+    #bd334e
+    #cd90bc
+    #1c131a
+    #774659
+    #fcfafa
+
+
+    TYPO
+
+    (.typo01) font-family: 'Megrim', cursive;
+    (.typo02) font-family: 'Chathura', sans-serif;
+    (.typo03) font-family: 'Libre Barcode 39 Text', cursive;
+
+*/
+
+
+/*GENERAL*/
+*{  
+    padding:0!important;
+    margin:0 auto!important;
+}
+
+.main-bg {
+    background-color: #fcfafa
+}
+
+
+/*HEADER*/
+#main-title {
+    font-family: 'Libre Barcode 39 Text', cursive;
+    font-size: 120px;
+    margin-top: 30%!important;
+    color: #170707;
+}
+#logo {
+    width: 10%;
+}
+
+#menu-btn {
+    background:none;
+    border:none;
+}
+a{
+    text-decoration:none!important;
+    color:black!important;
+}
+.upside-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+#menu-link-contact{
+    visibility:hidden;
+}
+
+#menu-link-admin {
+    visibility: hidden;
+}
+
+.line {
+    height: 300px;
+    border-right: 1px solid black;
+}
+
+
+/*BIO*/
+.typo02 {
+    font-family: 'Chathura', sans-serif;
+    font-size: 36px;
+}
+
+.bio-img{
+    border-radius:17px;
+}
+
+
+/*CAROUSEL*/
+.slide {
+    border-radius: 17px;
+}
+
+/*FOOTER*/
+
+/*CONTACT*/
