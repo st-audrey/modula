@@ -19,6 +19,8 @@ class ControllerMessage {
 
 	public function addMessage($date, $hour, $email, $name, $firstname, $content, $ip) {
 		$this->modelMessage->addMessage($date, $hour, $email, $name, $firstname, $content, $ip);
+		$vue = new Vue("MessageSent");
+        $vue->generer();
 		
     }
 

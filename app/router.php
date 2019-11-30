@@ -36,21 +36,41 @@ class Router {
 				}
 				else if ($_GET['type'] == 'contact') {
 					if (isset($_GET['action']) && $_GET['action'] == "message") {
-						$date = $this->getDate();
-						$hour = $this->getHour();
-						$ip = $this->getIp();
-						$email = $this->getParametre($_POST, 'email');
-						$name = $this->getParametre($_POST, 'name');
-						$firstname = $this->getParametre($_POST, 'firstname');
-						$content = $this->getParametre($_POST, 'content');
-						
 
-						$this->ctrlMessage->addMessage($date, $hour, $email, $name, $firstname, $content, $ip);
+						if(isset($_POST['g-recaptcha-response'])){
+							$captcha=$_POST['g-recaptcha-response'];
+						}
+
+						if(!$captcha){
+							  echo '<h2>Please check the the captcha form.</h2>';
+							  exit;
+						}
+
+						$secretKey = "6LfiZMUUAAAAADvODfe8D7H1XiVydM2XSZ0hYdVa";
+						$ip = $this->getIp();
+						// post request to server
+						$url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
+						$response = file_get_contents($url);
+						$responseKeys = json_decode($response,true);
+						// should return JSON with success as true
+						if($responseKeys["success"]) {
+								$ip = $this->getIp();
+								$date = $this->getDate();
+								$hour = $this->getHour();
+								$email = $this->getParametre($_POST, 'email');
+								$name = $this->getParametre($_POST, 'name');
+								$firstname = $this->getParametre($_POST, 'firstname');
+								$content = $this->getParametre($_POST, 'content');
+								$this->ctrlMessage->addMessage($date, $hour, $email, $name, $firstname, $content, $ip);
+
+						} else {
+								echo '<h2>You are spammer ! Get the @$%K out</h2>';
+						}	
 					}
 					else {
 						$this->ctrlMessage->showFormContact();
 					}
-				}				
+				}
 			}
 			else {
 				$this->ctrlHome->showHome();
