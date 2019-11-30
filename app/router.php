@@ -23,13 +23,13 @@ class Router {
 			if (isset($_GET['type'])) {
 				// Contrôle Login admin
 				if ($_GET['type'] == 'login') {
-					if ($_GET['action'] == "connexion") {
+					if (isset($_GET['action']) && $_GET['action'] == "connexion") {
 						$login = $this->getParametre($_POST, 'login');
 						$password = $this->getParametre($_POST, 'password');							
 						$this->ctrlLogin->verify($login, $password);
 					}
 					else {
-						throw new Exception("Identifiant et/ou mot de passe invalides.");
+						$this->ctrlLogin->showConnexion();
 					}
 				}
 				else if ($_GET['type'] == 'contact') {
@@ -45,9 +45,7 @@ class Router {
 						$this->ctrlMessage->addMessage($date, $hour, $email, $name, $firstname, $content, $ip);
 					}
 				}
-				else {
-					$this->ctrlLogin->showConnexion();
-				}
+				
 			}
 			else {
 				$this->ctrlHome->showHome();

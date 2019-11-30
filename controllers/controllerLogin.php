@@ -25,6 +25,10 @@ class ControllerLogin {
 				$view->generer(array('msgErreur' => 'Identifiant et/ou mot de passe non valide.'));
 			}
 		}
+		else {
+			$view = new Vue("Erreur");
+			$view->generer(array('msgErreur' => 'Cet identifiant n\'existe pas.'));
+		}
 	}
 
 	public function showConnexion(){
