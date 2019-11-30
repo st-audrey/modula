@@ -52,11 +52,11 @@ a{
 }
 
 #menu-link-contact{
-    visibility:hidden;
+    visibility:visible;
 }
 
 #menu-link-admin {
-    visibility: hidden;
+    visibility: visible;
 }
 
 .line {
