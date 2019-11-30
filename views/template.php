@@ -10,6 +10,9 @@
     <title>Page d'Accueil</title>
     <!--GOOGLE FONT-->
     <link href="https://fonts.googleapis.com/css?family=Chathura|Libre+Barcode+39+Text|Megrim&display=swap" rel="stylesheet">
+	<!--Google Captcha-->
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </head>
 
 <body>

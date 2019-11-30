@@ -36,13 +36,14 @@ class Router {
 				}
 				else if ($_GET['type'] == 'contact') {
 					if (isset($_GET['action']) && $_GET['action'] == "message") {
-						$date = getDate();
-						$hour = getHour();
-						$ip = getIp();
+						$date = $this->getDate();
+						$hour = $this->getHour();
+						$ip = $this->getIp();
 						$email = $this->getParametre($_POST, 'email');
 						$name = $this->getParametre($_POST, 'name');
 						$firstname = $this->getParametre($_POST, 'firstname');
-						$name = $this->getParametre($_POST, 'name');
+						$content = $this->getParametre($_POST, 'content');
+						
 
 						$this->ctrlMessage->addMessage($date, $hour, $email, $name, $firstname, $content, $ip);
 					}

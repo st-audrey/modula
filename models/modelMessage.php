@@ -4,7 +4,7 @@ require_once 'models/model.php';
 class ModelMessage extends Model {
 
 	// Renvoie la liste des messages enregistrés dans la bdd
-    public function getMessages() {
+    public function getMessage() {
         $sql = 'SELECT * FROM message';
         $message = $this->executerRequete($sql);
         return $message;
