@@ -31,7 +31,7 @@
 					<h1 id="main-title">CARPENTER<br /><strong>BRUT</strong></h1>
 				</div>
 				<div class="col-md-5">
-					<a id="menu-link-contact" class="menu-link" href="">CONTACT_____//</a><br />
+					<a id="menu-link-contact" class="menu-link" href="index.php?type=contact">CONTACT_____//</a><br />
 					<a id="menu-link-admin" class="menu-link" href="index.php?type=login">ADMIN______//</a>
 				</div>
 			</div>

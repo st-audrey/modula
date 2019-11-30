@@ -1,6 +1,6 @@
 ﻿<div class="container-fluid main-bg">
     <div class="row">
-        <form method="post" action="controleur/controleurContact.php" id="contact-form">
+        <form method="post" action="?type=contact&action=message" id="contact-form">
             <div class="form-group">
                 <label for="name">Nom</label>
                 <input type="text" name="name" class="form-control" id="" aria-describedby="" placeholder="Votre nom" required>

@@ -22,4 +22,9 @@ class ControllerMessage {
 		$this->modelMessage->deleteMessage($id);
 		$this->list();
     }
+
+	public function showFormContact() {
+        $view = new Vue("Contact");
+        $view->generer();
+	}
 }

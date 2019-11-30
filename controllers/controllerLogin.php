@@ -17,8 +17,7 @@ class ControllerLogin {
 		if ($admin->rowCount() > 0) {
 			$result = $admin->fetch(PDO::FETCH_ASSOC);
 			if(password_verify($password, $result['password'])) {
-				$view = new Vue("Admin");
-				$view->generer();
+				return True;
 			}
 			else {
 				$view = new Vue("Erreur");
@@ -29,6 +28,7 @@ class ControllerLogin {
 			$view = new Vue("Erreur");
 			$view->generer(array('msgErreur' => 'Cet identifiant n\'existe pas.'));
 		}
+		return False;
 	}
 
 	public function showConnexion(){

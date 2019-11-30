@@ -26,14 +26,16 @@ class Router {
 					if (isset($_GET['action']) && $_GET['action'] == "connexion") {
 						$login = $this->getParametre($_POST, 'login');
 						$password = $this->getParametre($_POST, 'password');							
-						$this->ctrlLogin->verify($login, $password);
+						if($this->ctrlLogin->verify($login, $password)) {
+							$this->ctrlMessage->list();
+						}
 					}
 					else {
 						$this->ctrlLogin->showConnexion();
 					}
 				}
 				else if ($_GET['type'] == 'contact') {
-					if ($_GET['action'] == 'contact') {
+					if (isset($_GET['action']) && $_GET['action'] == "message") {
 						$date = getDate();
 						$hour = getHour();
 						$ip = getIp();
@@ -44,8 +46,10 @@ class Router {
 
 						$this->ctrlMessage->addMessage($date, $hour, $email, $name, $firstname, $content, $ip);
 					}
-				}
-				
+					else {
+						$this->ctrlMessage->showFormContact();
+					}
+				}				
 			}
 			else {
 				$this->ctrlHome->showHome();
