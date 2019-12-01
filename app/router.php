@@ -21,12 +21,10 @@ class Router {
 	public function routerRequete() {
 		try {
 			if (isset($_GET['type'])) {
-				// Contrôle Login admin
+				// Login admin
 				if ($_GET['type'] == 'login') {
 					if (isset($_GET['action']) && $_GET['action'] == "connexion") {
-						$login = $this->getParametre($_POST, 'login');
-						$password = $this->getParametre($_POST, 'password');							
-						if($this->ctrlLogin->verify($login, $password)) {
+						if($this->ctrlLogin->verify($_POST)) {
 							$this->ctrlMessage->list();
 						}
 					}
@@ -34,39 +32,10 @@ class Router {
 						$this->ctrlLogin->showConnexion();
 					}
 				}
+				// Contact form
 				else if ($_GET['type'] == 'contact') {
 					if (isset($_GET['action']) && $_GET['action'] == "message") {
-						$captcha;
-						if(isset($_POST['g-recaptcha-response'])){
-							$captcha=$_POST['g-recaptcha-response'];
-						}
-
-						if(!isset($captcha)){
-							  echo json_encode(array("success" => False));
-							  exit;
-						}
-
-						$secretKey = "6LfiZMUUAAAAADvODfe8D7H1XiVydM2XSZ0hYdVa";
-						$ip = $this->getIp();
-						// post request to server
-						$url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
-						$response = file_get_contents($url);
-						$responseKeys = json_decode($response,true);
-						// should return JSON with success as true
-						if($responseKeys["success"]) {
-								$ip = $this->getIp();
-								$date = $this->getDate();
-								$hour = $this->getHour();
-								$email = $this->getParametre($_POST, 'email');
-								$name = $this->getParametre($_POST, 'name');
-								$firstname = $this->getParametre($_POST, 'firstname');
-								$content = $this->getParametre($_POST, 'content');
-								$this->ctrlMessage->addMessage($date, $hour, $email, $name, $firstname, $content, $ip);								
-	  							echo json_encode(array("success" => True));
-
-						} else {
-								echo json_encode(array("success" => False));
-						}	
+						$this->ctrlMessage->addMessage($_POST);
 					}
 					else {
 						$this->ctrlMessage->showFormContact();
@@ -80,47 +49,12 @@ class Router {
 		catch (Exception $e) {
 			$this->erreur($e->getMessage());
 		}
-			
-	}
-	
-	private function getDate(){
-		date_default_timezone_set("Europe/Paris");
-		$date = date("Y-m-d");
-		return $date;
-	}
-
-	private function getHour(){
-		date_default_timezone_set("Europe/Paris");
-		$hour = date("h:i:s");
-		return $hour;
-	}
-	
-	private function getIp(){
-		if (!empty($_SERVER['HTTP_CLIENT_IP'])){ //share internet
-			$ip=$_SERVER['HTTP_CLIENT_IP'];
-		}
-		elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){ //ip is pass from proxy
-			$ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
-		}
-		else{
-			$ip=$_SERVER['REMOTE_ADDR'];
-		}
-		return $ip;
 	}
 
 	private function erreur($msgErreur) {
         $vue = new Vue("Erreur");
         $vue->generer(array('msgErreur' => $msgErreur));
     }
-
-    private function getParametre($tableau, $nom) {
-        if (isset($tableau[$nom])) {
-            return $tableau[$nom];
-        }
-        else
-            throw new Exception("Paramètre '$nom' absent");
-    }
-
 }
 
 

@@ -15,8 +15,8 @@
 			<th scope="row"><?= $message['date'] ?></th>
 			<td><?= $message['hour'] ?></td>
 			<td><?= $message['email'] ?></td>
-			<td><a class="btn btn-primary" href="index1.php?type=messages&action=details" role="button">détails</a></td>
-			<td><a class="btn btn-primary" href="index1.php?type=messages&action=supprimer&id_message=<?= $message['id_message'] ?>" role="button">X</a></td>
+			<td><a class="btn btn-primary" href="index.php?type=message&action=detail" role="button">?</a></td>
+			<td><a class="btn btn-primary" href="index.php?type=message&action=supprimer&id_message=<?= $message['id'] ?>" role="button">X</a></td>
 		</tr>
 		<?php endforeach; ?>
 	</tbody>

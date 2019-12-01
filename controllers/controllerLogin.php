@@ -2,8 +2,9 @@
 
 require_once 'models/modelAdmin.php';
 require_once 'views/view.php';
+require_once 'controllers/controller.php';
 
-class ControllerLogin {
+class ControllerLogin extends Controller {
 
 	private $modelAdmin;
 
@@ -11,7 +12,9 @@ class ControllerLogin {
         $this->modelAdmin = new ModelAdmin();
 	}
 
-	public function verify($login, $password) {
+	public function verify($dataPost) {
+		$login = $this->getParameter($dataPost, 'login');
+		$password = $this->getParameter($dataPost, 'password');	
         $admin = $this->modelAdmin->getAdmin($login);
 		
 		if ($admin->rowCount() > 0) {
