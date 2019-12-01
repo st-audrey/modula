@@ -8,15 +8,18 @@ $(function () {
 
         $form = $("#formContact");
         $formMessage = $("#formMessage");
-        $name = $("#name").val();
-        $firstname = $("#firstname").val();
-        $email = $("#email").val();
-        $content = $("#text-zone").val();
+        $name = $("#name").val;
+        $firstname = $("#firstname").val;
+        $email = $("email").val;
+        $content = $("#text-zone").val;
         $dataString = 'name=' + $name +
                       '&email=' + $email +
                       '&firstname=' + $firstname +
                       '&content=' + $content +
                       '&g-recaptcha-response=' + grecaptcha.getResponse();
+
+        console.log($name);
+        console.log($email);
 
         $inputs = $form.find("input, button, textarea");
         $inputs.prop("disabled", true);
@@ -31,28 +34,27 @@ $(function () {
         });
     
         $request.done(function (response) {
-
+            // Make sure that the formMessages div has the 'success' class.
             $formMessage.removeClass('error');
             $formMessage.addClass('success');
-
+            
 
             // Set the message text.
             if (response['success']) {
-                $formMessage.text('Votre message a bien été envoyé.');
+                $formMessage.text('Votre message a bien été envoyé!!!!');
             }
             else {
-                $formMessage.text('Oops! Une erreur s\'est produite, votre message n\'a pas pu être envoyé.');
+                $formMessage.text('Oops! An error occured and your message could not be sent.');
             }
-
+            console.log(response);
             // Clear the form.
-            //$('#name').val('');
-            //$('#firstname').val('');
-            //$('#email').val('');
-            //$('#text-zone').val('');
+            $('#name').val('');
+            $('#firstname').val('');
+            $('#email').val('');
+            $('#text-zone').val('');
         })
-
         $request.fail(function (data) {
-
+            // Make sure that the formMessages div has the 'error' class.
             $formMessage.removeClass('success');
             $formMessage.addClass('error');
 
@@ -60,7 +62,7 @@ $(function () {
             if (data.responseText !== '') {
                 $formMessage.text(data.responseText);
             } else {
-                $formMessage.text('Oops! Une erreur s\'est produite, votre message n\'a pas pu être envoyé.');
+                $formMessage.text('Oops! An error occured and your message could not be sent.');
             }
         })        
     });

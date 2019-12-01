@@ -36,13 +36,13 @@ class Router {
 				}
 				else if ($_GET['type'] == 'contact') {
 					if (isset($_GET['action']) && $_GET['action'] == "message") {
-
+						$captcha;
 						if(isset($_POST['g-recaptcha-response'])){
 							$captcha=$_POST['g-recaptcha-response'];
 						}
 
-						if(!$captcha){
-							  echo '<h2>Please check the the captcha form.</h2>';
+						if(!isset($captcha)){
+							  echo json_encode(array("success" => False));
 							  exit;
 						}
 
@@ -61,10 +61,11 @@ class Router {
 								$name = $this->getParametre($_POST, 'name');
 								$firstname = $this->getParametre($_POST, 'firstname');
 								$content = $this->getParametre($_POST, 'content');
-								$this->ctrlMessage->addMessage($date, $hour, $email, $name, $firstname, $content, $ip);
+								$this->ctrlMessage->addMessage($date, $hour, $email, $name, $firstname, $content, $ip);								
+	  							echo json_encode(array("success" => True));
 
 						} else {
-								echo '<h2>You are spammer ! Get the @$%K out</h2>';
+								echo json_encode(array("success" => False));
 						}	
 					}
 					else {

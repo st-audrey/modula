@@ -12,9 +12,9 @@
 	<tbody>
 		<?php foreach ($messages as $message): ?>
 		<tr>
-			<th scope="row"><?= $message['date'] ?></th>
-			<td><?= $message['hour'] ?></td>
-			<td><?= $message['email'] ?></td>
+			<th scope="row"><?= $messages['date'] ?></th>
+			<td><?= $messages['hour'] ?></td>
+			<td><?= $messages['email'] ?></td>
 			<td><a class="btn btn-primary" href="index1.php?type=messages&action=details" role="button">détails</a></td>
 			<td><a class="btn btn-primary" href="index1.php?type=messages&action=supprimer&id_message=<?= $message['id_message'] ?>" role="button">X</a></td>
 		</tr>
@@ -22,3 +22,9 @@
 	</tbody>
 </table>
 
+
+<!--TODO : 1- récupérer tous les messages : 
+	//	2- affichage triés par date et heure (les plus récents en premier), afficher date, heure et email issu du formulaire
+	//	3- affichage complet avec nom, prénom, email, date, heure et message envoyé.
+	// + permettre suppression message		-->
+<!-- TODO : détails au click sur le bouton détail un dropdown avec en plus des infos déjà affichées, le nom, prénom et message complet -->

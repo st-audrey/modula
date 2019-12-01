@@ -1,19 +1,19 @@
 ﻿<div class="container-fluid main-bg">
     <div class="row">
-        <form method="post" action="?type=contact&action=message" id="sendMessage">
+        <form method="post" action="?type=contact&action=message" id="formContact">
             <div class="form-group">
                 <label for="name">Nom</label>
-                <input type="text" name="name" class="form-control" id="" aria-describedby="" placeholder="Votre nom" required>
+                <input type="text" name="name" class="form-control" id="name" aria-describedby="" placeholder="Votre nom" required>
                 <small id="nameHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-group">
                 <label for="firstname">Prénom</label>
-                <input type="text" name="firstname" class="form-control" id="" aria-describedby="" placeholder="Votre prénom" required>
+                <input type="text" name="firstname" class="form-control" id="firstname" aria-describedby="" placeholder="Votre prénom" required>
                 <small id="firstnameHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Adresse email</label>
-                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Votre email" required>
+                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Votre email" required>
                 <small id="emailHelp" class="form-text text-muted">Nous ne partageons pas vos données.</small>
             </div>
             <div class="form-group">
@@ -27,5 +27,6 @@
             </div>
             <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
         </form>
+		<p id="formMessage" class="success error"><p/>
     </div>
 </div>

@@ -12,16 +12,13 @@ class ControllerMessage {
 	}
 
     public function list() {
-        $messages = $this->modelMessage->getMessage();
+        $message = $this->modelMessage->getMessage();
         $vue = new Vue("Admin");
-        $vue->generer(array('messages' => $messages));
+        $vue->generer(array('messages' => $message));
     }
 
 	public function addMessage($date, $hour, $email, $name, $firstname, $content, $ip) {
-		$this->modelMessage->addMessage($date, $hour, $email, $name, $firstname, $content, $ip);
-		$vue = new Vue("MessageSent");
-        $vue->generer();
-		
+		$this->modelMessage->addMessage($date, $hour, $email, $name, $firstname, $content, $ip);		
     }
 
 	public function deleteMessage($id) {
