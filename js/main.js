@@ -43,12 +43,6 @@ $(function () {
             else {
                 $formMessage.text('Oops! Une erreur s\'est produite, votre message n\'a pas pu être envoyé.');
             }
-
-            // Clear the form.
-            //$('#name').val('');
-            //$('#firstname').val('');
-            //$('#email').val('');
-            //$('#text-zone').val('');
         });
 
         $request.fail(function (data) {
@@ -83,7 +77,22 @@ $(function () {
         });
 
         $request.done(function (response) {
-            //remplir ici le sticky
+
+            $("#message-name").html(response['name']);
+            $("#message-firstname").html(response['firstname']);
+            $("#message-content").html(response['content']);
+            $("#message-hour").html(response['hour']);
+            $("#message-date").html(response['date']);
+
+            $snackBar = $("#snackbar");
+            // Add the "show" class to DIV
+            $snackBar.addClass("show");
+            // After 3 seconds, remove the show class from DIV
+            setTimeout(function () {
+                $snackBar.removeClass("show");
+            }, 3000);
+
+
             console.log(response);
         });
 
