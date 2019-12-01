@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `hour` time NOT NULL,
-  `email` longtext NOT NULL,
+  `email` varchar(50) NOT NULL,
   `name` char(50) NOT NULL,
   `firstname` char(50) NOT NULL,
   `content` varchar(500) NOT NULL,
