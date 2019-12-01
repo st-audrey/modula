@@ -20,16 +20,15 @@ class ControllerLogin extends Controller {
 		if ($admin->rowCount() > 0) {
 			$result = $admin->fetch(PDO::FETCH_ASSOC);
 			if(password_verify($password, $result['password'])) {
+				$_SESSION['admin'] = True;
 				return True;
 			}
 			else {
-				$view = new Vue("Erreur");
-				$view->generer(array('msgErreur' => 'Identifiant et/ou mot de passe non valide.'));
+				throw new Exception('Identifiant et/ou mot de passe non valide.');
 			}
 		}
 		else {
-			$view = new Vue("Erreur");
-			$view->generer(array('msgErreur' => 'Cet identifiant n\'existe pas.'));
+			throw new Exception('Cet identifiant n\'existe pas.');
 		}
 		return False;
 	}

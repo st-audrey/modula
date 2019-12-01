@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once 'views/view.php';
 require_once 'controllers/controllerLogin.php';
 require_once 'controllers/controllerMessage.php';
@@ -23,9 +25,14 @@ class Router {
 			if (isset($_GET['type'])) {
 				// Login admin
 				if ($_GET['type'] == 'login') {
-					if (isset($_GET['action']) && $_GET['action'] == "connexion") {
-						if($this->ctrlLogin->verify($_POST)) {
-							$this->ctrlMessage->list();
+					if (isset($_GET['action'])) {
+						if($_GET['action'] == "connexion") {
+							if($this->ctrlLogin->verify($_POST)) {
+								$this->ctrlMessage->list();
+							}
+						}
+						else if($_GET['action'] == "detail") {
+							$this->ctrlMessage->getDetailMessage($_POST);
 						}
 					}
 					else {

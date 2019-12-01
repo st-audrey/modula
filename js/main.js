@@ -49,7 +49,7 @@ $(function () {
             //$('#firstname').val('');
             //$('#email').val('');
             //$('#text-zone').val('');
-        })
+        });
 
         $request.fail(function (data) {
 
@@ -62,7 +62,37 @@ $(function () {
             } else {
                 $formMessage.text('Oops! Une erreur s\'est produite, votre message n\'a pas pu être envoyé.');
             }
-        })        
+        });  
     });
+
+
+    $(".btn-detail").on('click', function (e) {
+        e.preventDefault();
+        $token = $("#table-message").data('token');
+        $id = $(this).attr('id');
+        $dataString = 'token=' + $token +
+            '&id=' + $id;
+        console.log($dataString);
+        // AJAX code to get details.
+        $request = $.ajax({
+            type: "POST",
+            url: '?type=login&action=detail',
+            data: $dataString,
+            dataType: 'JSON',
+            cache: false,
+        });
+
+        $request.done(function (response) {
+            //remplir ici le sticky
+            console.log(response);
+        });
+
+        $request.fail(function (data) {
+            
+            console.log(data.responseText);
+
+        });
+    });
+
 });
 

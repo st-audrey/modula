@@ -44,9 +44,21 @@ class ControllerMessage extends Controller {
 		}	
     }
 
-	public function deleteMessage($id) {
-		$this->modelMessage->deleteMessage($id);
-		
+	public function getDetailMessage($dataPost) {
+
+		if (isset($_SESSION['token']) && isset($dataPost['token']) && !empty($_SESSION['token']) && !empty($dataPost['token'])) {
+			//Check CSRF and if the user is logged as an admin
+			if ($_SESSION['token'] == $_POST['token'] && isset($_SESSION['admin'])) {
+				$message = $this->modelMessage->getDetailMessage($dataPost['id']);
+				if ($message->rowCount() > 0) {
+					$data = $message->fetch(PDO::FETCH_ASSOC);
+					echo json_encode($data);
+				}
+				else {
+					throw new Exception('L\'identifiant de ce message est introuvable.');	
+				}
+			}
+		}
     }
 
 	public function showFormContact() {
