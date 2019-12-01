@@ -34,6 +34,10 @@ class ControllerMessage extends Controller {
 				$name =			htmlspecialchars($this->getParameter($dataPost, 'name'));
 				$firstname =	htmlspecialchars($this->getParameter($dataPost, 'firstname'));
 				$content =		htmlspecialchars($this->getParameter($dataPost, 'content'));
+				if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+					echo json_encode(array("success" => False));
+					return;
+				}
 
 				$this->modelMessage->addMessage($date, $hour, $email, $name, $firstname, $content, $ip);								
 	  			echo json_encode(array("success" => True));
