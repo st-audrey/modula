@@ -35,7 +35,29 @@ class ControllerMessage extends Controller {
 				$firstname =	htmlspecialchars($this->getParameter($dataPost, 'firstname'));
 				$content =		htmlspecialchars($this->getParameter($dataPost, 'content'));
 				if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-					echo json_encode(array("success" => False));
+					echo json_encode(array("success" => False,
+										   "error" => "Votre e-mail est invalide."));
+					return;
+				}
+
+				if(strlen($email) > 50) {
+					echo json_encode(array("success" => False,
+										   "error" => "Votre e-mail est trop long."));
+					return;
+				}
+				if(strlen($name) > 50) {
+					echo json_encode(array("success" => False,
+										   "error" => "Votre nom est trop long."));
+					return;
+				}
+				if(strlen($firstname) > 50) {
+					echo json_encode(array("success" => False,
+										   "error" => "Votre prenom est trop long."));
+					return;
+				}
+				if(strlen($content) > 500) {
+					echo json_encode(array("success" => False,
+										   "error" => "Votre message est trop long."));
 					return;
 				}
 
@@ -43,7 +65,8 @@ class ControllerMessage extends Controller {
 	  			echo json_encode(array("success" => True));
 
 		} else {
-				echo json_encode(array("success" => False));
+				echo json_encode(array("success" => False,
+									   "error" => "Le captcha ne correspond pas."));
 		}	
     }
 

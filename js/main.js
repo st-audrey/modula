@@ -40,7 +40,7 @@ $(function () {
                 $formMessage.text('Votre message a bien \u00e9t\u00e9 envoy\u00e9.');
             }
             else {
-                $formMessage.text('Oops! Une erreur s\'est produite, votre message n\'a pas pu \u00eatre envoy\u00e9.');
+                $formMessage.text(response['error']);
             }
         });
 
