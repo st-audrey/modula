@@ -17,7 +17,7 @@
 <div class="container-fluid main-bg">
     <div class="row">
         <div class="col-md-1 offset-1 mt-5">
-            <p class="typo02">Franck Hueso, mieux connu sous son nom de sc&#232;ne <strong>Carpenter Brut</strong><br /> est un synthwave artist fran&ccedil;ais originaire de Poitiers.</p>
+            <p class="typo02">Franck Hueso, mieux connu sous son nom de scène <strong>Carpenter Brut</strong><br /> est un synthwave artist français originaire de Poitiers.</p>
         </div>
         <div class="col-md-8 offset-2 mt-2">
             <img id="bio-img" class="w-100 bio-img" src="img/bio-color.jpg" />
@@ -45,7 +45,7 @@
 			 <a target="_blank" href="https://carpenterbrut.bandcamp.com/album/ep-i"><img class="w-100 album-img" src="img/6.jpg" /></a>
         </div>
 		<div class="row">
-		<h3 class="typo02">Cliquer sur un album pour &eacute;couter son contenu.</h3>
+		<h3 class="typo02">Cliquer sur un album pour écouter son contenu.</h3>
 		</div>
 	</div>
 </div>
@@ -55,7 +55,7 @@
             <img id="bio-img" class="w-100 bio-img" src="img/bio-color2.jpg" />
         </div>
 		<div class="col-md-1 offset-1 mt-5">
-            <p class="typo02">Carpenter Brut tire ses influences des &eacute;missions de t&eacute;l&eacute;vision des ann&eacute;es 80 et des films de s&eacute;rie remplis de synth&eacute;tiseurs, entre Justice et l'univers de John Carpenter.</p>
+            <p class="typo02">Carpenter Brut tire ses influences des émissions de télévision des années 80 et des films de série remplis de synthétiseurs, entre Justice et l'univers de John Carpenter.</p>
         </div>
 	</div>
 </div>

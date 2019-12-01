@@ -88,12 +88,11 @@ $(function () {
             // Add the "show" class to DIV
             $snackBar.addClass("show");
             // After 3 seconds, remove the show class from DIV
-            setTimeout(function () {
+ 
+            $("#toast-btn").on('click', function (e) {
                 $snackBar.removeClass("show");
-            }, 3000);
-
-
-            console.log(response);
+            })
+       
         });
 
         $request.fail(function (data) {
@@ -102,6 +101,8 @@ $(function () {
 
         });
     });
+
+    
 
 });
 
