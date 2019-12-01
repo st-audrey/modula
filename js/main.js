@@ -80,6 +80,7 @@ $(function () {
             $("#message-name").html(response['name']);
             $("#message-firstname").html(response['firstname']);
             $("#message-content").html(response['content']);
+            $("#message-email").html(response['email']);
             $("#message-hour").html(response['hour']);
             $("#message-date").html(response['date']);
 
