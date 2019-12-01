@@ -37,10 +37,10 @@ $(function () {
 
             // Set the message text.
             if (response['success']) {
-                $formMessage.text('Votre message a bien été envoyé.');
+                $formMessage.text('Votre message a bien \u00e9t\u00e9 envoy\u00e9.');
             }
             else {
-                $formMessage.text('Oops! Une erreur s\'est produite, votre message n\'a pas pu être envoyé.');
+                $formMessage.text('Oops! Une erreur s\'est produite, votre message n\'a pas pu \u00eatre envoy\u00e9.');
             }
         });
 
@@ -53,7 +53,7 @@ $(function () {
             if (data.responseText !== '') {
                 $formMessage.text(data.responseText);
             } else {
-                $formMessage.text('Oops! Une erreur s\'est produite, votre message n\'a pas pu être envoyé.');
+                $formMessage.text('Oops! Une erreur s\'est produite, votre message n\'a pas pu \u00eatre envoy\u00e9.');
             }
         });  
     });
