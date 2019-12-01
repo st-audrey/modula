@@ -29,10 +29,13 @@ class ControllerMessage extends Controller {
 				$ip = $this->getIp();
 				$date = $this->getDate();
 				$hour = $this->getHour();
-				$email = $this->getParameter($dataPost, 'email');
-				$name = $this->getParameter($dataPost, 'name');
-				$firstname = $this->getParameter($dataPost, 'firstname');
-				$content = $this->getParameter($dataPost, 'content');
+
+				$email =		htmlspecialchars($this->getParameter($dataPost, 'email'));
+				$name =			htmlspecialchars($this->getParameter($dataPost, 'name'));
+				$firstname =	htmlspecialchars($this->getParameter($dataPost, 'firstname'));
+				$content =		htmlspecialchars($this->getParameter($dataPost, 'content'));
+
+
 				$this->modelMessage->addMessage($date, $hour, $email, $name, $firstname, $content, $ip);								
 	  			echo json_encode(array("success" => True));
 
