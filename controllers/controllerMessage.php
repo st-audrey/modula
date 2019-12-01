@@ -24,17 +24,16 @@ class ControllerMessage extends Controller {
 			$captcha=$dataPost['g-recaptcha-response'];
 		}
 
-		// should return JSON with success as true
 		if($this->checkCaptcha($captcha)) {
 				$ip = $this->getIp();
 				$date = $this->getDate();
 				$hour = $this->getHour();
 
+				// Protection contre les failles XSS
 				$email =		htmlspecialchars($this->getParameter($dataPost, 'email'));
 				$name =			htmlspecialchars($this->getParameter($dataPost, 'name'));
 				$firstname =	htmlspecialchars($this->getParameter($dataPost, 'firstname'));
 				$content =		htmlspecialchars($this->getParameter($dataPost, 'content'));
-
 
 				$this->modelMessage->addMessage($date, $hour, $email, $name, $firstname, $content, $ip);								
 	  			echo json_encode(array("success" => True));
@@ -47,7 +46,7 @@ class ControllerMessage extends Controller {
 	public function getDetailMessage($dataPost) {
 
 		if (isset($_SESSION['token']) && isset($dataPost['token']) && !empty($_SESSION['token']) && !empty($dataPost['token'])) {
-			//Check CSRF and if the user is logged as an admin
+			// Vérification du token contre CSRF et si l'utilisateur est loggé en tant qu'admin
 			if ($_SESSION['token'] == $_POST['token'] && isset($_SESSION['admin'])) {
 				$message = $this->modelMessage->getDetailMessage($dataPost['id']);
 				if ($message->rowCount() > 0) {
@@ -73,7 +72,7 @@ class ControllerMessage extends Controller {
 		}
 		$secretKey = "6LfiZMUUAAAAADvODfe8D7H1XiVydM2XSZ0hYdVa";
 		$ip = $this->getIp();
-		// post request to server
+		// vérif auprès de l'API google
 		$url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
 		$response = file_get_contents($url);
 		$responseKeys = json_decode($response,true);

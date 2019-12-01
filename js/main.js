@@ -35,7 +35,6 @@ $(function () {
             $formMessage.removeClass('error');
             $formMessage.addClass('success');
 
-
             // Set the message text.
             if (response['success']) {
                 $formMessage.text('Votre message a bien été envoyé.');
@@ -87,7 +86,6 @@ $(function () {
             $snackBar = $("#snackbar");
             // Add the "show" class to DIV
             $snackBar.addClass("show");
-            // After 3 seconds, remove the show class from DIV
  
             $("#toast-btn").on('click', function (e) {
                 $snackBar.removeClass("show");
@@ -96,13 +94,8 @@ $(function () {
         });
 
         $request.fail(function (data) {
-            
             console.log(data.responseText);
-
         });
     });
-
-    
-
 });
 

@@ -16,7 +16,7 @@ class ModelMessage extends Model {
         $this->executerRequete($sql, array($date, $hour, $email, $name, $firstname, $content, $ip));
     }
 
-		
+	//Renvoie les détails d'un message
     public function getDetailMessage($id) {
         $sql = 'SELECT * FROM message WHERE id=?';
         $message = $this->executerRequete($sql, array($id));

@@ -7,7 +7,6 @@ require_once 'controllers/controllerLogin.php';
 require_once 'controllers/controllerMessage.php';
 require_once 'controllers/controllerHome.php';
 
-
 class Router {
 	
     private $ctrlLogin;
@@ -54,11 +53,11 @@ class Router {
 			}
 		}
 		catch (Exception $e) {
-			$this->erreur($e->getMessage());
+			$this->error($e->getMessage());
 		}
 	}
 
-	private function erreur($msgErreur) {
+	private function error($msgErreur) {
         $vue = new Vue("Erreur");
         $vue->generer(array('msgErreur' => $msgErreur));
     }
